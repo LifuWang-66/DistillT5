@@ -5,8 +5,6 @@ from transformers import T5EncoderModel
 from models.T5_encoder import T5EncoderWithProjection
 import argparse
 import torch
-
-sys.path.insert(0, './diffusers/src')
 from diffusers import FluxPipeline
 
 
@@ -24,7 +22,7 @@ pipe = FluxPipeline.from_pretrained("/pfs/models/FLUX.1-dev", torch_dtype=torch.
 pipe = pipe.to(device)
 
 torch.cuda.manual_seed(args.seed)
-prompt = ["Snapshot of ferret wearing timberland boots, blue aviation bomber jacket, rayban sunglasses, mountain view, sunlight"]
+prompt = "Snapshot of ferret wearing timberland boots, blue aviation bomber jacket, rayban sunglasses, mountain view, sunlight"
 
 
 text_encoder = T5EncoderModel.from_pretrained("/pfs/models/flan-t5-base", torch_dtype=torch.float16)
