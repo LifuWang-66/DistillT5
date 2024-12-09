@@ -1,7 +1,6 @@
 import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from transformers import T5EncoderModel
 from models.T5_encoder import T5EncoderWithProjection
 import argparse
 import torch
@@ -9,26 +8,19 @@ from diffusers import FluxPipeline
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--ckpt_name', type=str, default="flux_flan_t5_base_300kiter")
 parser.add_argument('--device', type=str, default="cuda")
-parser.add_argument('--seed', type=int, default=4396)
-parser.add_argument('--use_bias', action='store_true')
-parser.add_argument('--project_in_dim', type=int, default=768)
+parser.add_argument('--seed', type=int, default=4396)   
 parser.add_argument('--resolution', type=int, default=1024)
 args = parser.parse_args()
 
 device = args.device
-pipe = FluxPipeline.from_pretrained("/pfs/models/FLUX.1-dev", torch_dtype=torch.float16)
+pipe = FluxPipeline.from_pretrained("black-forest-labs/FLUX.1-dev", torch_dtype=torch.float16)
 pipe = pipe.to(device)
 
 torch.cuda.manual_seed(args.seed)
 prompt = "Photorealistic portrait of a stylish young woman wearing a futuristic golden sequined bodysuit that catches the light, creating a metallic, mirror-like effect. She is wearing large, reflective blue-tinted aviator sunglasses. Over her head, she wears headphones with metallic accents, giving a modern, cyber aesthetic."
 
-
-text_encoder = T5EncoderModel.from_pretrained("/pfs/models/flan-t5-base", torch_dtype=torch.float16)
-text_encoder = T5EncoderWithProjection(text_encoder, args)
-state_dict = torch.load(os.path.join('ckpt', args.ckpt_name + ".pth"))
-text_encoder.load_state_dict(state_dict)
+text_encoder = T5EncoderWithProjection.from_pretrained('lwang717/ScalingDownTextEncoder', torch_dtype=torch.float16)
 pipe.text_encoder_2 = text_encoder.to(device)
 
 torch.cuda.manual_seed(args.seed)

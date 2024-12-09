@@ -1,3 +1,4 @@
 *.pth
 *.png
 *.safetensors
+*_pycache_
