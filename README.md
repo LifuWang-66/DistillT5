@@ -18,5 +18,6 @@ Download the checkpoint from drive and put it in ckpt folder.
 
  ## Inference
 ```python
-python inference_flux.py --ckpt_name $ckpt_name
-```
+pyth
+on inference_flux.py --ckpt_name $ckpt_name
+``` 
