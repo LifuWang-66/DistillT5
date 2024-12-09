@@ -13,9 +13,6 @@ Diffusers may occasionally raise a 'no attribute _execution_device' error when u
 pip install ./diffusers
 ```
 
-## Download models
-Download the checkpoint from drive and put it in ckpt folder.
-
 ## Inference Script
 ```python
 python inference_flux.py --ckpt_name $ckpt_name
