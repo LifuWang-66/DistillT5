@@ -13,10 +13,31 @@ Diffusers may occasionally raise a 'no attribute _execution_device' error when u
 pip install ./diffusers
 ```
 
- ## Download models
+## Download models
 Download the checkpoint from drive and put it in ckpt folder.
 
- ## Inference
+## Inference Script
 ```python
 python inference_flux.py --ckpt_name $ckpt_name
+``` 
+## Example Usage
+```python
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from models.T5_encoder import T5EncoderWithProjection
+import torch
+from diffusers import FluxPipeline
+
+
+pipe = FluxPipeline.from_pretrained("black-forest-labs/FLUX.1-dev", torch_dtype=torch.float16)
+pipe = pipe.to('cuda')
+text_encoder = T5EncoderWithProjection.from_pretrained('lwang717/ScalingDownTextEncoder', torch_dtype=torch.float16)
+pipe.text_encoder_2 = text_encoder.to(device)
+
+prompt = "Photorealistic portrait of a stylish young woman wearing a futuristic golden sequined bodysuit that catches the light, creating a metallic, mirror-like effect. She is wearing large, reflective blue-tinted aviator sunglasses. Over her head, she wears headphones with metallic accents, giving a modern, cyber aesthetic."
+
+image = pipe(prompt=prompt, num_images_per_prompt=1, guidance_scale=3.5, num_inference_steps=20).images[0]
+
+image.save("t5_base.png")
 ``` 
