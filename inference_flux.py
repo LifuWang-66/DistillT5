@@ -20,7 +20,7 @@ pipe = pipe.to(device)
 torch.cuda.manual_seed(args.seed)
 prompt = "Photorealistic portrait of a stylish young woman wearing a futuristic golden sequined bodysuit that catches the light, creating a metallic, mirror-like effect. She is wearing large, reflective blue-tinted aviator sunglasses. Over her head, she wears headphones with metallic accents, giving a modern, cyber aesthetic."
 
-text_encoder = T5EncoderWithProjection.from_pretrained('lwang717/ScalingDownTextEncoder', torch_dtype=torch.float16)
+text_encoder = T5EncoderWithProjection.from_pretrained('LifuWang/DistillT5', torch_dtype=torch.float16)
 pipe.text_encoder_2 = text_encoder.to(device)
 
 torch.cuda.manual_seed(args.seed)

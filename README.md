@@ -3,8 +3,8 @@ This repository provides the implementation for our paper "Scaling Down Text Enc
 
 ## Install environment
 ```shell
-conda create -n scaling python=3.12
-conda activate scaling
+conda create -n distillt5 python=3.12
+conda activate distillt5
 pip install -r requirements.txt
 ```
 
@@ -28,7 +28,7 @@ from diffusers import FluxPipeline
 
 
 pipe = FluxPipeline.from_pretrained("black-forest-labs/FLUX.1-dev", torch_dtype=torch.float16)
-text_encoder = T5EncoderWithProjection.from_pretrained('lwang717/ScalingDownTextEncoder', torch_dtype=torch.float16)
+text_encoder = T5EncoderWithProjection.from_pretrained('LifuWang/DistillT5', torch_dtype=torch.float16)
 pipe.text_encoder_2 = text_encoder
 pipe = pipe.to('cuda')
 
