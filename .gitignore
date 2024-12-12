@@ -2,3 +2,5 @@
 *.png
 *.safetensors
 *_pycache_
+*push_model
+*ckpt
