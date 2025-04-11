@@ -1,4 +1,4 @@
-# Scaling Down Text Encoder of Text-To-Image Diffusion Models
+# Scaling Down Text Encoder of Text-To-Image Diffusion Models [[Paper](https://arxiv.org/abs/2503.19897)] [[ComfyUI](https://github.com/LifuWang-66/DistillT5ComfyUI)] [[HuggingFace](https://huggingface.co/LifuWang/DistillT5)]
 This repository provides the implementation for our paper "Scaling Down Text Encoder of Text-To-Image Diffusion Models". We replace the large T5-XXL in Flux with T5-Base, achieving 50 times reduction in model size.
 
 ## Install environment
