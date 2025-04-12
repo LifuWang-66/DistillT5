@@ -18,7 +18,7 @@ huggingface-cli login
 ```
 ## Inference Script
 Then run the inference script
-```python
+```shell
 python inference_flux.py
 ``` 
 ## Example Usage
