@@ -15,7 +15,7 @@ pip install ./diffusers
 
 ## Inference Script
 ```python
-python inference_flux.py --ckpt_name $ckpt_name
+python inference_flux.py
 ``` 
 ## Example Usage
 ```python
@@ -38,3 +38,18 @@ image = pipe(prompt=prompt, num_images_per_prompt=1, guidance_scale=3.5, num_inf
 
 image.save("t5_base.png")
 ``` 
+
+
+## Training Script
+Since the training has 3 stages, you should use the  datasets accordingly. For stage 1, use T2I-CompBench only；for stage 2, use CommonText only (resolution 1024); for stage 3, use all 3 datasets.
+```python
+accelerate launch train_flux.py  \
+    --train_text_encoder \
+    --mixed_precision bf16 \
+    --train_batch_size 4 \
+    --resolution 512 \
+    --text_encoder_lr 1e-4 \
+    --laion_path data/laion_6.5.json \
+    --compbench_path data/T2I-CompBench \
+    --commontext_path data/CommonText_Train.json \
+    --num_train_epochs 1 
