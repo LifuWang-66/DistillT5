@@ -177,7 +177,16 @@ def parse_args(input_args=None):
     parser.add_argument('--laion_path', type=str, default="data/laion_6.5.json")
     parser.add_argument('--compbench_path', type=str, default="data/T2I-CompBench")
     parser.add_argument('--commontext_path', type=str, default="data/CommonText_Train.json")
-    
+    parser.add_argument(
+        "--checkpointing_steps",
+        type=int,
+        default=10000,
+        help=(
+            "Save a checkpoint of the training state every X updates. These checkpoints can be used both as final"
+            " checkpoints in case they are better than the last checkpoint, and are also suitable for resuming"
+            " training using `--resume_from_checkpoint`."
+        ),
+    )
 
     parser.add_argument(
         "--revision",
