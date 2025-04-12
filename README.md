@@ -12,8 +12,12 @@ Diffusers may occasionally raise a 'no attribute _execution_device' error when u
 ```shell
 pip install ./diffusers
 ```
-
+Flux is now gated. Login with your HF token to get permission
+```shell
+huggingface-cli login
+```
 ## Inference Script
+Then run the inference script
 ```python
 python inference_flux.py
 ``` 
