@@ -1,7 +1,7 @@
 *.pth
 *.png
 *.safetensors
-*_pycache_
+*__pycache__
 *push_model
 *ckpt
 laion
