@@ -57,6 +57,7 @@ accelerate launch train_flux.py  \
     --compbench_path data/T2I-CompBench \
     --commontext_path data/CommonText_Train.json \
     --num_train_epochs 1 
+```
 
 ## BibTeX
 If you find this work useful for your research, please consider citing:
