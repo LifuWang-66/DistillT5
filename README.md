@@ -57,3 +57,15 @@ accelerate launch train_flux.py  \
     --compbench_path data/T2I-CompBench \
     --commontext_path data/CommonText_Train.json \
     --num_train_epochs 1 
+
+## BibTeX
+If you find this work useful for your research, please consider citing:
+```
+@inproceedings{wang2025scaling,
+  title={Scaling Down Text Encoders of Text-to-Image Diffusion Models},
+  author={Wang, Lifu and Liu, Daqing and Liu, Xinchen and He, Xiaodong},
+  booktitle={Proceedings of the Computer Vision and Pattern Recognition Conference},
+  pages={18424--18433},
+  year={2025}
+}
+```
